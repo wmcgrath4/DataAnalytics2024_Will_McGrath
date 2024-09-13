@@ -1,1 +1,176 @@
+> View(EPI_data)
+> EPI_data = read.csv ("epi.csv", header= TRUE )
+> View(EPI_data)
+> attach(EPI_data)
+> EPI.new
+  [1] 30.7 52.1 41.9 39.7 55.5 46.8 44.7 63.0 69.0 40.4
+ [11] 56.0 35.9 27.8 53.1 58.1 66.7 47.4 37.4 43.3 44.9
+ [21] 45.6 49.0 53.0 48.5 56.3 41.5 33.0 37.9 31.0 38.1
+ [31] 61.1 38.3 35.2 50.0 35.5 49.4 37.9 55.5 42.5 62.6
+ [41] 52.3 54.0 65.6 39.0 67.9 32.2 49.2 47.6 51.2 43.8
+ [51] 41.5 41.6 28.6 75.3 38.5 35.8 45.8 73.7 67.1 53.1
+ [61] 37.1 46.9 74.6 36.6 67.4 46.0 32.6 36.2 41.6 48.6
+ [71] 36.2 40.2 60.1 64.3 27.6 33.8 41.6 30.4 65.7 48.1
+ [81] 60.5 48.5 61.7 47.5 47.5 36.9 44.1 44.9 42.2 26.1
+ [91] 59.9 40.1 36.6 34.1 63.9 75.0 29.9 34.9 41.2 38.1
+[101] 33.9 66.6 42.6 34.2 47.3 44.7 40.6 45.6 37.0 47.6
+[111] 39.7 38.6 26.9 43.8 32.9 67.2 57.7 47.4 39.2 37.5
+[121] 50.0 70.0 51.9 25.5 52.9 36.5 39.0 46.6 32.0 64.4
+[131] 62.2 47.2 41.2 57.2 46.5 33.4 51.0 54.1 46.8 35.9
+[141] 42.6 43.3 49.3 48.2 39.7 53.8 65.0 62.5 41.8 42.9
+[151] 51.0 64.2 38.7 38.6 56.6 70.5 68.0 50.3 31.9 43.1
+[161] 45.4 49.7 35.2 40.2 52.1 45.7 37.6 40.7 35.4 54.6
+[171] 52.0 72.7 57.3 43.9 42.9 44.6 53.1 24.5 46.1 51.7
+> tf<-is.na(EPI.new)
+> E<-EPI.new[!tf]
+> View(EPI_data)
+> "Exersise 1"
+[1] "Exersise 1"
+> summary(EPI.new)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  24.50   38.25   45.50   46.84   53.10   75.30 
+> fivenum(EPI.new,na.rm=TRUE)
+[1] 24.5 38.2 45.5 53.1 75.3
+> stem(EPI.new)
 
+  The decimal point is 1 digit(s) to the right of the |
+
+  2 | 
+  2 | 5667889
+  3 | 001122233334444
+  3 | 5555666666777777788888889999999
+  4 | 0000000111122222222333333334444
+  4 | 5555556666667777777778888889999999
+  5 | 000011122222233333444
+  5 | 5666677788
+  6 | 0011223334444
+  6 | 56677777889
+  7 | 0134
+  7 | 555
+
+> hist(EPI.new)
+> hist(EPI.new, seq(20.,80 1.0),prob=TRUE)
+Error: unexpected numeric constant in "hist(EPI.new, seq(20.,80 1.0"
+> hist(EPI.new, seq(20.,80., 1.0),prob=TRUE)
+> lines(density(EPI.new,na.rm=TRUE,bw=1.))
+> rug(EPI.new)
+> help(stem)
+> boxplot(EPI.new, APO.new)
+> hist(EPI.new,seq(20.,80.,1.0),prob=TRUE)
+> lines(density(EPI.new,na.rm=TRUE,bw="SJ"))
+> rug(EPI.new)
+> hist(EPI.new,seq(20.,80.,1.0),prob=TRUE)
+> lines(density(EPI.new,na.rm=TRUE,bw=1.))
+> rug(EPI.new)
+> x<-seq(20,80,1)
+> q<-dnorm(x,mean=42,sd=5,log=FALSE)
+> lines(x,q)
+> lines(x,.4*q)
+> q<-dnorm(x,mean=65,sd=5,log=FALSE)
+> lines(x,.12*Q)
+Error: object 'Q' not found
+> lines(x,.12*q)
+> "Exersise 2"
+[1] "Exersise 2"
+> plot(ecdf(EPI.new),do.points=FALSE,verticals = TRUE)
+> qqnorm(EPI.new);qqline(EPI.new)
+> qqplot(rnorm(250),EPI.new,xlab="Q-Q plot for t dsn")
+> qqline(EPI.new)
+> "Exersise 2a: ECO.old"
+[1] "Exersise 2a: ECO.old"
+> ECO.old
+  [1] 21.1 50.3 39.7 35.9 52.4 41.7 46.8 60.7 78.4 44.7
+ [11] 54.7 45.9 27.3 34.1 60.4 61.6 55.8 51.0 56.4 58.4
+ [21] 48.7 68.2 58.2 51.5 70.5 58.0 52.2 26.4 36.3 45.2
+ [31] 57.8 58.7 50.9 54.8 34.5 52.9 48.8 63.2 38.4 70.2
+ [41] 52.1 55.7 79.0 47.9 64.2 25.2 42.9 58.4 51.2 46.9
+ [51] 45.8 53.0 27.3 75.8 39.9 42.3 39.6 70.1 68.3 57.2
+ [61] 40.1 45.8 80.9 45.5 65.6 39.2 42.8 51.0 48.7 53.3
+ [71] 29.2 47.0 73.0 56.8 28.1 31.7 45.5 27.4 61.0 45.1
+ [81] 58.4 49.9 56.9 36.7 51.5 48.0 46.8 56.7 35.5 35.0
+ [91] 70.3 34.1 45.7 32.2 70.3 83.1 28.4 57.8 33.8 40.5
+[101] 45.9 55.1 38.2 37.9 33.2 46.5 29.5 44.1 52.6 48.2
+[111] 34.8 48.4 31.5 58.6 47.4 64.7 51.3 58.6 46.1 38.7
+[121] 54.1 67.2 48.6 33.1 56.4 38.0 44.4 53.2 33.9 78.8
+[131] 61.4 54.1 55.4 67.7 48.2 45.7 45.4 49.8 35.9 36.2
+[141] 39.2 46.6 54.7 46.3 41.6 59.2 77.5 68.3 34.0 44.8
+[151] 47.8 67.5 40.9 35.5 55.6 67.3 68.7 53.2 45.0 52.3
+[161] 49.0 43.9 45.0 37.3 47.6 47.5 40.8 36.9 43.8 49.4
+[171] 54.3 72.8 54.1 39.7 48.2 30.5 60.2 32.2 63.5 57.1
+> tf<-is.na(EPI.new)
+> E<-EPI.new[!tf]
+> summary(ECO.old)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  21.10   40.05   48.30   49.52   57.12   83.10 
+> fivenum(EPI.old,na.rm=TRUE)
+[1] 18.00 36.20 42.65 50.90 71.70
+> stem(ECO.old)
+
+  The decimal point is 1 digit(s) to the right of the |
+
+  2 | 1
+  2 | 56777889
+  3 | 0122223344444
+  3 | 5556666667778888999
+  4 | 00000111222334444
+  4 | 555555566666666667777777888888888999999
+  5 | 000111112222223333334444
+  5 | 55555666667777788888889999
+  6 | 001112344
+  6 | 5677888889
+  7 | 0000133
+  7 | 68899
+  8 | 13
+
+> fivenum(ECO.old,na.rm=TRUE)
+[1] 21.10 40.00 48.30 57.15 83.10
+> hist(ECO.old)
+> hist(ECO.old,seq(20.,80.,1.0), prob=TRUE)
+Error in hist.default(ECO.old, seq(20, 80, 1), prob = TRUE) : 
+  some 'x' not counted; maybe 'breaks' do not span range of 'x'
+> hist(ECO.old,seq(20.,80., 1.0), prob=TRUE)
+Error in hist.default(ECO.old, seq(20, 80, 1), prob = TRUE) : 
+  some 'x' not counted; maybe 'breaks' do not span range of 'x'
+> hist(ECO.old,seq(20., 80., 1.0), prob=TRUE)
+Error in hist.default(ECO.old, seq(20, 80, 1), prob = TRUE) : 
+  some 'x' not counted; maybe 'breaks' do not span range of 'x'
+> hist(ECO.old,seq(?), prob=TRUE)
+Error: unexpected ')' in "hist(ECO.old,seq(?)"
+> seq(?)
+Error: unexpected ')' in "seq(?)"
+> seq?
++ help(seq)
+Error in `?`(seq, help(seq)) : 
+  no documentation of type ‘seq’ and topic ‘help(seq)’ (or error in processing help)
+> help("seq")
+> hist(EPI.new, ECO.old)
+Error in plot.window(xlim, ylim, "", ...) : need finite 'ylim' values
+> hist(EPI.new,ECO.old)
+Error in plot.window(xlim, ylim, "", ...) : need finite 'ylim' values
+> hist(ECO.old,seq(20., 85., 1.0), prob=TRUE)
+> lines(density(ECO.old,na.rm=TRUE,bw=1.))
+> rug(ECO.old)
+> hist(ECO.old, seq(20.,85.,1.0),prob=TRUE)
+> lines(density(EPI.old,na.rm=TRUE,bw="SJ"))
+> rug(EPI.new)
+> x<-seq(20,85,1)
+> sd
+function (x, na.rm = FALSE) 
+sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
+    na.rm = na.rm))
+<bytecode: 0x106ef1368>
+<environment: namespace:stats>
+> help(sd)
+> sd(ECO.old,na.rm=FALSE)
+[1] 12.65822
+> q<-dnorm(x,mean=49.52,sd=12.65822,log=FALSE)
+> lines(x,q)
+> lines(x,.4*q)
+> q<-dnorm(x,mean=60,sd=12.65822,log=FALSE)
+> lines(x,.12*q)
+> plot(ecdf(ECO.old),do.points=FALSE, verticals=TRUE)
+> qqnorm(ECO.old);qqline(ECO.old)
+> qqplot(rnorm(250),ECO.old,xlab="Q-Q plot for norm dsn")
+> qqline(ECO.old)
+> qqplot(rt(250, df = 5), ECO.old, xlab = "Q-Q plot for t dsn")
+> qqline(ECO.old)
