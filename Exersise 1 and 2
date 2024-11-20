@@ -1,0 +1,59 @@
+
+ Exercise 1
+ 
+ > setwd("/Users/willmcgrath/Desktop/R/abalone")
+> abalone<-read.csv("abalone.data", header=FALSE)
+> colnames(abalone) <- c("sex", "length", 'diameter', 'height', 'whole_weight', 'shucked_wieght', 'viscera_wieght', 'shell_weight', 'rings' )
+> abalone$age.group <- cut(abalone$rings, br=c(0,8,11,35), labels = c("young", 'adult', 'old'))
+> abalone.norm <- abalone[,-1]
+> View(abalone.norm)
+> classifier<-naiveBayes(abalone.norm[,1:8],abalone.norm[,9])
+> table(predict(classifier,abalone.norm[,-9]),abalone.norm[,9],dnn =list("predicted","actual"))
+ 
+ > classifier$tables$diameter
+ > plot(function(x)dnorm(x,0.3212758,0.09029187),0,1,col="red",main="Diameter Dist for 3 age groups ")
+> curve(dnorm(x,0.4458591,0.07153798),add=TRUE, col="blue")
+> curve(dnorm(x,0.4632083,0.06699741),add=TRUE, col="green")
+> View(classifier)
+> View(classifier)
+> classifier$tables$shucked_wiegh
+ 
+ > plot(function(x)dnorm(x,0.1981990,0.1470311),-.5,1,col="red",main="Shucked Weight Dist for 3 age groups ")
+> curve(dnorm(x,0.4399235,0.2084367),add=TRUE, col="blue")
+> curve(dnorm(x,0.4436984,0.2083567),add=TRUE, col="green")
+> classifier$tables$height
+ 
+ 
+ plot(function(x)dnorm(x,0.1065956,0.04183039),-.2,.4,col="red",main=" Height Dist for 3 age groups ")
+> curve(dnorm(x,0.1516906,0.02984784),add=TRUE, col="blue")
+> curve(dnorm(x,0.1648125,0.02935998),add=TRUE, col="green")
+
+Exersise 2
+
+> setwd("/Users/willmcgrath/Desktop/R")
+> contingency.matrix = as.matrix(contingency.table)
+> View(iris)
+> sum(diag(contingency.matrix))/length(iris.test$Species)
+[1] 0.9555556
+> accuracy <- c()
+> ks<-c(6,8,10,12,14)
+> library(class)
+> library(e1071)
+Warning message:
+package ‘e1071’ was built under R version 4.3.3 
+> for (k in ks) {
++     KNNpred <- knn(train = iris.train[1:4], test = iris.test[1:4], cl = iris.train$Species, k = k) 
++ cm = as.matrix(table(Actual=KNNpred, Predicted = iris.test$Species, dnn=list('predicted','actual'))) 
++ accuracy <- c(accuracy,sum(diag(cm))/length(iris.test$Species))
++ }
+> plot(ks,accuracy,type = "b", ylim = c(0.6,1))
+> plot(ks,accuracy,type = "b", ylim = c(0.9,1))
+> accuracy <- c()
+> ks<-c(2,4,6,8,10,12,14,16)
+> for (k in ks) {
++     KNNpred <- knn(train = iris.train[1:4], test = iris.test[1:4], cl = iris.train$Species, k = k) 
++ cm = as.matrix(table(Actual=KNNpred, Predicted = iris.test$Species, dnn=list('predicted','actual'))) 
++ accuracy <- c(accuracy,sum(diag(cm))/length(iris.test$Species))
+> plot(ks,accuracy,type = "b", ylim = c(0.9,1))
+accuracy <- c(accuracy,sum(diag(cm))/length(iris.test$Species))
+}
